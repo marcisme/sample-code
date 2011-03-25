@@ -25,6 +25,10 @@ describe Greeter do
   include Rack::Test::Methods
   include Warden::Test::Helpers
 
+  after(:each) do
+    Warden.test_reset!
+  end
+
   def app
     Rack::Builder.new do
       # these serialization methods don't do anything in this example,
